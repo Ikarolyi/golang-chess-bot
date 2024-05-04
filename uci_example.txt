@@ -1,0 +1,310 @@
+
+Arena 3.10beta
+
+2024-05-03 18:01:48,681**Fast graphics mode ok
+2024-05-03 18:01:49,151**----------New game---2024-05-03 18:01:49,151 Fri -------------
+2024-05-03 18:01:49,297**Arena Start took: 1062 ms
+2024-05-03 18:01:49,620**Loading  1
+2024-05-03 18:02:04,041*1*---------------Starting engine 1 Stockfish 10 64 Bit Standard---------------
+2024-05-03 18:02:04,044*1*Configured Engine 1 Type:   UCI
+2024-05-03 18:02:04,044*1*enginedebug:CommandLine: >>nice -1 /home/ikarolyi/Applications/arena/Engines/Stockfish/stockfish_10_x64_official <<
+2024-05-03 18:02:04,044*1*enginedebug:-- executing engine--
+2024-05-03 18:02:04,046*1*enginedebug:EngineReadThread create...
+2024-05-03 18:02:04,046*1*enginedebug:EngineReadThread created suspended
+2024-05-03 18:02:04,046*1*enginedebug:-- Thread now starting --
+2024-05-03 18:02:04,047*1*enginedebug:-- Tengine.Redirect finished --
+2024-05-03 18:02:04,067<--1:-- starting engine[slotnr].EngineProcess --
+2024-05-03 18:02:04,067<--1:-- engine[slotnr].EngineProcess.Running --
+2024-05-03 18:02:04,069<--1:Stockfish 10 64 by T. Romstad, M. Costalba, J. Kiiski, G. Linscott
+2024-05-03 18:02:04,069-->1:uci
+2024-05-03 18:02:04,100<--1:id name Stockfish 10 64
+2024-05-03 18:02:04,100<--1:id author T. Romstad, M. Costalba, J. Kiiski, G. Linscott
+2024-05-03 18:02:04,100<--1:option name Debug Log File type string default 
+2024-05-03 18:02:04,100<--1:option name Contempt type spin default 24 min -100 max 100
+2024-05-03 18:02:04,100<--1:option name Analysis Contempt type combo default Both var Off var White var Black var Both
+2024-05-03 18:02:04,100<--1:option name Threads type spin default 1 min 1 max 512
+2024-05-03 18:02:04,100<--1:option name Hash type spin default 16 min 1 max 131072
+2024-05-03 18:02:04,100<--1:option name Clear Hash type button
+2024-05-03 18:02:04,100<--1:option name Ponder type check default false
+2024-05-03 18:02:04,100<--1:option name MultiPV type spin default 1 min 1 max 500
+2024-05-03 18:02:04,100<--1:option name Skill Level type spin default 20 min 0 max 20
+2024-05-03 18:02:04,100<--1:option name Move Overhead type spin default 30 min 0 max 5000
+2024-05-03 18:02:04,100<--1:option name Minimum Thinking Time type spin default 20 min 0 max 5000
+2024-05-03 18:02:04,100<--1:option name Slow Mover type spin default 84 min 10 max 1000
+2024-05-03 18:02:04,100<--1:option name nodestime type spin default 0 min 0 max 10000
+2024-05-03 18:02:04,100<--1:option name UCI_Chess960 type check default false
+2024-05-03 18:02:04,100<--1:option name UCI_AnalyseMode type check default false
+2024-05-03 18:02:04,101<--1:option name SyzygyPath type string default <empty>
+2024-05-03 18:02:04,101<--1:option name SyzygyProbeDepth type spin default 1 min 1 max 100
+2024-05-03 18:02:04,101<--1:option name Syzygy50MoveRule type check default true
+2024-05-03 18:02:04,101<--1:option name SyzygyProbeLimit type spin default 7 min 0 max 7
+2024-05-03 18:02:04,101<--1:uciok
+2024-05-03 18:02:04,104-->1:setoption name Debug Log File value 
+2024-05-03 18:02:04,104-->1:setoption name Contempt value 24
+2024-05-03 18:02:04,104-->1:setoption name Analysis Contempt value Both
+2024-05-03 18:02:04,109-->1:setoption name Threads value 1
+2024-05-03 18:02:04,109-->1:setoption name Hash value 12
+2024-05-03 18:02:04,109-->1:setoption name Ponder value false
+2024-05-03 18:02:04,109-->1:setoption name MultiPV value 1
+2024-05-03 18:02:04,109-->1:setoption name Skill Level value 20
+2024-05-03 18:02:04,109-->1:setoption name Move Overhead value 30
+2024-05-03 18:02:04,109-->1:setoption name Minimum Thinking Time value 20
+2024-05-03 18:02:04,109-->1:setoption name Slow Mover value 84
+2024-05-03 18:02:04,109-->1:setoption name nodestime value 0
+2024-05-03 18:02:04,109-->1:setoption name UCI_Chess960 value false
+2024-05-03 18:02:04,109-->1:setoption name UCI_AnalyseMode value false
+2024-05-03 18:02:04,109-->1:setoption name SyzygyPath value /home/ikarolyi/Applications/arena/TB/syzygy
+2024-05-03 18:02:04,109-->1:setoption name SyzygyProbeDepth value 1
+2024-05-03 18:02:04,109-->1:setoption name Syzygy50MoveRule value true
+2024-05-03 18:02:04,109-->1:setoption name SyzygyProbeLimit value 7
+2024-05-03 18:02:04,111-->1:isready
+2024-05-03 18:02:04,151<--1:info string Found 5 tablebases
+2024-05-03 18:02:04,152<--1:readyok
+2024-05-03 18:02:10,747**----------New game---2024-05-03 18:02:10,747 Fri -------------
+2024-05-03 18:02:16,836*1*Start calc, move no: 1
+2024-05-03 18:02:16,841-->1:ucinewgame
+2024-05-03 18:02:16,841-->1:isready
+2024-05-03 18:02:16,847<--1:info string Found 5 tablebases
+2024-05-03 18:02:16,847<--1:readyok
+2024-05-03 18:02:16,849-->1:position startpos moves e2e4
+2024-05-03 18:02:16,849-->1:go wtime 300000 btime 300000 winc 0 binc 0
+2024-05-03 18:02:16,849<--1:info depth 1 seldepth 1 multipv 1 score cp 34 nodes 31 nps 31000 tbhits 0 time 1 pv d7d5
+2024-05-03 18:02:16,874<--1:info depth 2 seldepth 2 multipv 1 score cp 101 nodes 55 nps 55000 tbhits 0 time 1 pv d7d5 e4d5
+2024-05-03 18:02:16,874<--1:info depth 3 seldepth 3 multipv 1 score cp 101 nodes 85 nps 85000 tbhits 0 time 1 pv d7d5 e4d5 d8d5
+2024-05-03 18:02:16,874<--1:info depth 4 seldepth 4 multipv 1 score cp 125 nodes 343 nps 171500 tbhits 0 time 2 pv e7e6 f2f3 d7d5 g2g3
+2024-05-03 18:02:16,875<--1:info depth 5 seldepth 6 multipv 1 score cp 18 nodes 1359 nps 453000 tbhits 0 time 3 pv d7d5 d1e2 e7e6 e4d5 d8d5
+2024-05-03 18:02:16,875<--1:info depth 6 seldepth 6 multipv 1 score cp -19 nodes 2508 nps 627000 tbhits 0 time 4 pv d7d5 e4d5 d8d5 d1e2 e7e6 c2c4
+2024-05-03 18:02:16,875<--1:info depth 7 seldepth 9 multipv 1 score cp -38 nodes 5714 nps 952333 tbhits 0 time 6 pv d7d5 e4d5 d8d5 b1c3 d5f5 g1e2
+2024-05-03 18:02:16,875<--1:info depth 8 seldepth 9 multipv 1 score cp -71 nodes 7254 nps 1036285 tbhits 0 time 7 pv d7d5 e4d5 d8d5 d1e2 d5e6 d2d4 e6e2 g1e2 c8d7
+2024-05-03 18:02:16,875<--1:info depth 9 seldepth 11 multipv 1 score cp -83 nodes 16389 nps 1170642 tbhits 0 time 14 pv c7c5 d2d4 c5d4 c2c3 d4c3 b1c3 b8c6 g1f3
+2024-05-03 18:02:16,875<--1:info depth 10 seldepth 12 multipv 1 score cp -29 nodes 20738 nps 1152111 tbhits 0 time 18 pv d7d5 e4e5 d5d4 c2c3 b8c6 g1f3 d4c3
+2024-05-03 18:02:16,886<--1:info depth 11 seldepth 18 multipv 1 score cp -58 nodes 46712 nps 1197743 tbhits 0 time 39 pv d7d5 e4d5 d8d5 b1c3 d5e6 g1e2 g8f6 d2d3 c7c6 c1e3 f6d5 c3d5 c6d5
+2024-05-03 18:02:16,916<--1:info depth 12 seldepth 16 multipv 1 score cp -27 nodes 88575 nps 1283695 tbhits 0 time 69 pv e7e6 d2d4 d7d5 e4e5 g8e7 g1f3 b8d7 b1c3 c7c6
+2024-05-03 18:02:16,981<--1:info depth 13 seldepth 20 multipv 1 score cp -36 nodes 233399 nps 1741783 tbhits 0 time 134 pv e7e5 g1f3 b8c6 f1c4 g8f6 e1g1 f8c5 d2d3 d7d5 e4d5 f6d5 c2c3 d5f6
+2024-05-03 18:02:17,032<--1:info depth 14 seldepth 19 multipv 1 score cp -22 nodes 343087 nps 1854524 tbhits 0 time 185 pv e7e5 g1f3 b8c6 f1c4 g8f6 e1g1 f8e7 d2d4 e5d4 e4e5 f6g4 f1e1 d7d6 e5d6 d8d6 c1g5 e8g8 g5e7 c6e7
+2024-05-03 18:02:17,132<--1:info depth 15 seldepth 23 multipv 1 score cp -26 nodes 557428 nps 1962774 tbhits 0 time 284 pv e7e5 g1f3 b8c6 f1c4 g8f6 e1g1 f8e7 d2d4 e5d4 e4e5 f6g4 f1e1 d7d6 e5e6 f7e6 f3d4 g4f2 g1f2 c6d4 f2g1 e7f6 e1e4
+2024-05-03 18:02:17,314<--1:info depth 16 seldepth 28 multipv 1 score cp -39 nodes 951274 nps 2041360 tbhits 0 time 466 pv e7e5 g1f3 b8c6 f1c4 g8f6 e1g1 f8e7 d2d4 e5d4 e4e5 f6g4 f1e1 d7d6 e5e6 c8e6 c4e6 f7e6
+2024-05-03 18:02:17,449<--1:info depth 17 seldepth 26 multipv 1 score cp -30 nodes 1232690 nps 2051064 tbhits 0 time 601 pv e7e5 g1f3 b8c6 f1b5 g8f6 e1g1 f8c5 b5c6 d7c6 d2d3 d8d6 h2h3 e8g8 c1e3 c5e3 f2e3 h7h6 b1d2 c8e6
+2024-05-03 18:02:17,943<--1:info depth 18 seldepth 28 multipv 1 score cp -16 nodes 2279022 nps 2079399 hashfull 913 tbhits 0 time 1096 pv e7e6 d2d4 d7d5 e4e5 g8e7 g1f3 c7c5 c2c3 b8c6 f1d3 e7g6 h2h4 c5d4 c3d4 f8e7 b1c3 g6h4 f3h4 e7h4
+2024-05-03 18:02:18,324<--1:info depth 19 seldepth 29 multipv 1 score cp -11 nodes 3114052 nps 2109791 hashfull 966 tbhits 0 time 1476 pv e7e6 d2d4 d7d5 e4e5 g8e7 g1f3 c7c5 c2c3 b8c6 f1d3 c8d7 e1g1 e7g6 c1e3 f8e7 b1d2 e8g8 h2h3 c5d4 c3d4 c6b4 d3g6 h7g6 d2b3 b4c6
+2024-05-03 18:02:18,980<--1:info depth 20 seldepth 31 multipv 1 score cp 1 nodes 4559334 nps 2138524 hashfull 995 tbhits 0 time 2132 pv e7e6 d2d4 d7d5 e4e5 c7c5 c2c3 b8c6 g1f3 c8d7 f1d3 c5d4 c3d4 d8b6 d3c2 c6b4 b1c3 b4c2 d1c2 a8c8 e1g1 g8e7
+2024-05-03 18:02:19,955<--1:info depth 20 currmove e7e5 currmovenumber 2
+2024-05-03 18:02:19,955<--1:info depth 20 currmove g8f6 currmovenumber 3
+2024-05-03 18:02:19,959<--1:info depth 20 currmove d7d5 currmovenumber 4
+2024-05-03 18:02:19,959<--1:info depth 20 currmove c7c6 currmovenumber 5
+2024-05-03 18:02:19,963<--1:info depth 20 currmove d7d6 currmovenumber 6
+2024-05-03 18:02:19,963<--1:info depth 20 currmove g7g6 currmovenumber 7
+2024-05-03 18:02:19,963<--1:info depth 20 currmove a7a6 currmovenumber 8
+2024-05-03 18:02:19,964<--1:info depth 20 currmove c7c5 currmovenumber 9
+2024-05-03 18:02:19,964<--1:info depth 20 currmove b8c6 currmovenumber 10
+2024-05-03 18:02:19,964<--1:info depth 20 currmove f7f6 currmovenumber 11
+2024-05-03 18:02:19,964<--1:info depth 20 currmove b7b5 currmovenumber 12
+2024-05-03 18:02:19,964<--1:info depth 20 currmove f7f5 currmovenumber 13
+2024-05-03 18:02:19,964<--1:info depth 20 currmove h7h6 currmovenumber 14
+2024-05-03 18:02:19,964<--1:info depth 20 currmove b8a6 currmovenumber 15
+2024-05-03 18:02:19,964<--1:info depth 20 currmove g8h6 currmovenumber 16
+2024-05-03 18:02:19,964<--1:info depth 20 currmove g7g5 currmovenumber 17
+2024-05-03 18:02:19,964<--1:info depth 20 currmove b7b6 currmovenumber 18
+2024-05-03 18:02:19,964<--1:info depth 20 currmove a7a5 currmovenumber 19
+2024-05-03 18:02:19,964<--1:info depth 20 currmove h7h5 currmovenumber 20
+2024-05-03 18:02:19,964<--1:info depth 21 seldepth 30 multipv 1 score cp 13 nodes 6725873 nps 2158495 hashfull 999 tbhits 0 time 3116 pv e7e6 d2d4 d7d5 e4d5 e6d5 g1f3 g8f6 b1c3 f8d6 f1d3 e8g8 e1g1 c7c6 f1e1 c8e6 d1d2 b8d7 f3g5 d8c7 g5e6 f7e6 d2g5 d6h2 g1h1 a8e8
+2024-05-03 18:02:19,964<--1:info depth 22 currmove e7e6 currmovenumber 1
+2024-05-03 18:02:20,128<--1:info depth 22 currmove e7e5 currmovenumber 2
+2024-05-03 18:02:20,195<--1:info depth 22 currmove g8f6 currmovenumber 3
+2024-05-03 18:02:20,196<--1:info depth 22 currmove d7d5 currmovenumber 4
+2024-05-03 18:02:20,216<--1:info depth 22 currmove d7d6 currmovenumber 5
+2024-05-03 18:02:20,219<--1:info depth 22 currmove b8c6 currmovenumber 6
+2024-05-03 18:02:20,220<--1:info depth 22 currmove c7c6 currmovenumber 7
+2024-05-03 18:02:20,221<--1:info depth 22 currmove f7f6 currmovenumber 8
+2024-05-03 18:02:20,221<--1:info depth 22 currmove c7c5 currmovenumber 9
+2024-05-03 18:02:20,227<--1:info depth 22 currmove b7b5 currmovenumber 10
+2024-05-03 18:02:20,228<--1:info depth 22 currmove g7g6 currmovenumber 11
+2024-05-03 18:02:20,228<--1:info depth 22 currmove h7h6 currmovenumber 12
+2024-05-03 18:02:20,229<--1:info depth 22 currmove a7a6 currmovenumber 13
+2024-05-03 18:02:20,229<--1:info depth 22 currmove a7a5 currmovenumber 14
+2024-05-03 18:02:20,229<--1:info depth 22 currmove g8h6 currmovenumber 15
+2024-05-03 18:02:20,229<--1:info depth 22 currmove f7f5 currmovenumber 16
+2024-05-03 18:02:20,232<--1:info depth 22 currmove g7g5 currmovenumber 17
+2024-05-03 18:02:20,233<--1:info depth 22 currmove b8a6 currmovenumber 18
+2024-05-03 18:02:20,233<--1:info depth 22 currmove b7b6 currmovenumber 19
+2024-05-03 18:02:20,233<--1:info depth 22 currmove h7h5 currmovenumber 20
+2024-05-03 18:02:20,234<--1:info depth 22 seldepth 32 multipv 1 score cp 3 upperbound nodes 7316510 nps 2160174 hashfull 999 tbhits 0 time 3387 pv e7e6 d2d4
+2024-05-03 18:02:20,235<--1:info depth 22 currmove e7e6 currmovenumber 1
+2024-05-03 18:02:20,244<--1:info depth 22 currmove e7e5 currmovenumber 2
+2024-05-03 18:02:20,248<--1:info depth 22 currmove b8c6 currmovenumber 3
+2024-05-03 18:02:20,249<--1:info depth 22 currmove c7c6 currmovenumber 4
+2024-05-03 18:02:20,260<--1:info depth 22 currmove h7h6 currmovenumber 5
+2024-05-03 18:02:20,260<--1:info depth 22 currmove d7d5 currmovenumber 6
+2024-05-03 18:02:20,261<--1:info depth 22 currmove d7d6 currmovenumber 7
+2024-05-03 18:02:20,261<--1:info depth 22 currmove a7a6 currmovenumber 8
+2024-05-03 18:02:20,261<--1:info depth 22 currmove c7c5 currmovenumber 9
+2024-05-03 18:02:20,270<--1:info depth 22 currmove g7g6 currmovenumber 10
+2024-05-03 18:02:20,271<--1:info depth 22 currmove g8f6 currmovenumber 11
+2024-05-03 18:02:20,271<--1:info depth 22 currmove a7a5 currmovenumber 12
+2024-05-03 18:02:20,272<--1:info depth 22 currmove b7b5 currmovenumber 13
+2024-05-03 18:02:20,272<--1:info depth 22 currmove f7f5 currmovenumber 14
+2024-05-03 18:02:20,272<--1:info depth 22 currmove b8a6 currmovenumber 15
+2024-05-03 18:02:20,272<--1:info depth 22 currmove f7f6 currmovenumber 16
+2024-05-03 18:02:20,272<--1:info depth 22 currmove g8h6 currmovenumber 17
+2024-05-03 18:02:20,272<--1:info depth 22 currmove g7g5 currmovenumber 18
+2024-05-03 18:02:20,272<--1:info depth 22 currmove b7b6 currmovenumber 19
+2024-05-03 18:02:20,272<--1:info depth 22 currmove h7h5 currmovenumber 20
+2024-05-03 18:02:20,273<--1:info depth 22 seldepth 32 multipv 1 score cp -5 upperbound nodes 7402487 nps 2161310 hashfull 999 tbhits 0 time 3425 pv e7e6 d2d4
+2024-05-03 18:02:20,273<--1:info depth 22 currmove e7e6 currmovenumber 1
+2024-05-03 18:02:20,767<--1:info depth 22 seldepth 32 multipv 1 score cp 3 lowerbound nodes 8464302 nps 2159260 hashfull 999 tbhits 0 time 3920 pv e7e6
+2024-05-03 18:02:20,767<--1:info depth 21 currmove e7e6 currmovenumber 1
+2024-05-03 18:02:20,977<--1:info depth 21 currmove e7e5 currmovenumber 2
+2024-05-03 18:02:20,982<--1:info depth 21 currmove b8c6 currmovenumber 3
+2024-05-03 18:02:20,982<--1:info depth 21 currmove c7c5 currmovenumber 4
+2024-05-03 18:02:20,990<--1:info depth 21 currmove a7a6 currmovenumber 5
+2024-05-03 18:02:20,992<--1:info depth 21 currmove c7c6 currmovenumber 6
+2024-05-03 18:02:20,993<--1:info depth 21 currmove d7d5 currmovenumber 7
+2024-05-03 18:02:20,994<--1:info depth 21 currmove g8f6 currmovenumber 8
+2024-05-03 18:02:20,995<--1:info depth 21 currmove b7b5 currmovenumber 9
+2024-05-03 18:02:20,995<--1:info depth 21 currmove h7h6 currmovenumber 10
+2024-05-03 18:02:20,995<--1:info depth 21 currmove f7f6 currmovenumber 11
+2024-05-03 18:02:20,995<--1:info depth 21 currmove d7d6 currmovenumber 12
+2024-05-03 18:02:20,995<--1:info depth 21 currmove b8a6 currmovenumber 13
+2024-05-03 18:02:20,995<--1:info depth 21 currmove g7g6 currmovenumber 14
+2024-05-03 18:02:20,996<--1:info depth 21 currmove b7b6 currmovenumber 15
+2024-05-03 18:02:20,996<--1:info depth 21 currmove a7a5 currmovenumber 16
+2024-05-03 18:02:20,996<--1:info depth 21 currmove f7f5 currmovenumber 17
+2024-05-03 18:02:20,996<--1:info depth 21 currmove g8h6 currmovenumber 18
+2024-05-03 18:02:20,996<--1:info depth 21 currmove g7g5 currmovenumber 19
+2024-05-03 18:02:20,996<--1:info depth 21 currmove h7h5 currmovenumber 20
+2024-05-03 18:02:20,996<--1:info depth 22 seldepth 32 multipv 1 score cp -8 nodes 8959669 nps 2159997 hashfull 999 tbhits 0 time 4148 pv e7e6 d2d4 d7d5 e4d5 e6d5 g1f3 g8f6 f1d3 c7c5 c2c3 f8e7 d4c5 e7c5 d1e2 c5e7 e1g1 e8g8 c1e3 e7d6 b1d2 b8c6 f1e1 f8e8 h2h3 c8d7 d3c2 c6e5 f3e5 e8e5
+2024-05-03 18:02:20,997<--1:info depth 23 currmove e7e6 currmovenumber 1
+2024-05-03 18:02:22,211<--1:info depth 23 currmove e7e5 currmovenumber 2
+2024-05-03 18:02:22,229<--1:info depth 23 currmove g8f6 currmovenumber 3
+2024-05-03 18:02:22,234<--1:info depth 23 currmove d7d5 currmovenumber 4
+2024-05-03 18:02:22,243<--1:info depth 23 currmove b8c6 currmovenumber 5
+2024-05-03 18:02:22,246<--1:info depth 23 currmove d7d6 currmovenumber 6
+2024-05-03 18:02:22,256<--1:info depth 23 currmove c7c6 currmovenumber 7
+2024-05-03 18:02:22,257<--1:info depth 23 currmove b7b5 currmovenumber 8
+2024-05-03 18:02:22,257<--1:info depth 23 currmove h7h6 currmovenumber 9
+2024-05-03 18:02:22,258<--1:info depth 23 currmove a7a6 currmovenumber 10
+2024-05-03 18:02:22,258<--1:info depth 23 currmove f7f5 currmovenumber 11
+2024-05-03 18:02:22,261<--1:info depth 23 currmove f7f6 currmovenumber 12
+2024-05-03 18:02:22,261<--1:info depth 23 currmove c7c5 currmovenumber 13
+2024-05-03 18:02:22,265<--1:info depth 23 currmove h7h5 currmovenumber 14
+2024-05-03 18:02:22,265<--1:info depth 23 currmove a7a5 currmovenumber 15
+2024-05-03 18:02:22,266<--1:info depth 23 currmove g7g6 currmovenumber 16
+2024-05-03 18:02:22,267<--1:info depth 23 currmove b8a6 currmovenumber 17
+2024-05-03 18:02:22,267<--1:info depth 23 currmove g8h6 currmovenumber 18
+2024-05-03 18:02:22,267<--1:info depth 23 currmove g7g5 currmovenumber 19
+2024-05-03 18:02:22,267<--1:info depth 23 currmove b7b6 currmovenumber 20
+2024-05-03 18:02:22,268<--1:info depth 23 seldepth 37 multipv 1 score cp -18 upperbound nodes 11695110 nps 2157769 hashfull 999 tbhits 0 time 5420 pv e7e6 d2d4
+2024-05-03 18:02:22,268<--1:info depth 23 currmove e7e6 currmovenumber 1
+2024-05-03 18:02:23,149<--1:info depth 23 currmove e7e5 currmovenumber 2
+2024-05-03 18:02:23,149<--1:info depth 23 currmove d7d5 currmovenumber 3
+2024-05-03 18:02:23,149<--1:info depth 23 currmove c7c6 currmovenumber 4
+2024-05-03 18:02:23,172<--1:info depth 23 currmove b8c6 currmovenumber 5
+2024-05-03 18:02:23,172<--1:info depth 23 currmove c7c5 currmovenumber 6
+2024-05-03 18:02:23,172<--1:info depth 23 currmove b7b5 currmovenumber 7
+2024-05-03 18:02:23,172<--1:info depth 23 currmove a7a6 currmovenumber 8
+2024-05-03 18:02:23,172<--1:info depth 23 currmove h7h6 currmovenumber 9
+2024-05-03 18:02:23,172<--1:info depth 23 currmove f7f5 currmovenumber 10
+2024-05-03 18:02:23,172<--1:info depth 23 currmove g7g6 currmovenumber 11
+2024-05-03 18:02:23,172<--1:info depth 23 currmove d7d6 currmovenumber 12
+2024-05-03 18:02:23,172<--1:info depth 23 currmove g8f6 currmovenumber 13
+2024-05-03 18:02:23,172<--1:info depth 23 currmove b8a6 currmovenumber 14
+2024-05-03 18:02:23,172<--1:info depth 23 currmove f7f6 currmovenumber 15
+2024-05-03 18:02:23,172<--1:info depth 23 currmove g8h6 currmovenumber 16
+2024-05-03 18:02:23,172<--1:info depth 23 currmove g7g5 currmovenumber 17
+2024-05-03 18:02:23,173<--1:info depth 23 currmove a7a5 currmovenumber 18
+2024-05-03 18:02:23,173<--1:info depth 23 currmove b7b6 currmovenumber 19
+2024-05-03 18:02:23,173<--1:info depth 23 currmove h7h5 currmovenumber 20
+2024-05-03 18:02:23,173<--1:info depth 23 seldepth 37 multipv 1 score cp -18 nodes 13656856 nps 2159528 hashfull 999 tbhits 0 time 6324 pv e7e6 d2d4 d7d5 b1d2 c7c5 e4d5 e6d5 g1f3 g8f6 f1b5 c8d7 b5d7 b8d7 e1g1 f8e7 d4c5 d7c5 d2b3 c5e4 f3d4 e8g8 c2c3 f8e8 f1e1 a7a6 d4f5 e4d6 b3d4 e7f8 e1e8 d8e8 f5e3 g7g6
+2024-05-03 18:02:23,174<--1:info depth 24 currmove e7e6 currmovenumber 1
+2024-05-03 18:02:23,931<--1:info depth 24 seldepth 36 multipv 1 score cp -8 lowerbound nodes 15308988 nps 2161370 hashfull 999 tbhits 0 time 7083 pv e7e6
+2024-05-03 18:02:23,931<--1:info depth 23 currmove e7e6 currmovenumber 1
+2024-05-03 18:02:24,580<--1:info depth 24 seldepth 36 multipv 1 score cp 0 lowerbound nodes 16728474 nps 2163537 hashfull 999 tbhits 0 time 7732 pv e7e6
+2024-05-03 18:02:24,580<--1:info depth 22 currmove e7e6 currmovenumber 1
+2024-05-03 18:02:25,334<--1:info depth 22 currmove e7e5 currmovenumber 2
+2024-05-03 18:02:25,334<--1:info depth 22 currmove b8c6 currmovenumber 3
+2024-05-03 18:02:25,334<--1:info depth 22 currmove d7d5 currmovenumber 4
+2024-05-03 18:02:25,334<--1:info depth 22 currmove c7c6 currmovenumber 5
+2024-05-03 18:02:25,334<--1:info depth 22 currmove c7c5 currmovenumber 6
+2024-05-03 18:02:25,334<--1:info depth 22 currmove d7d6 currmovenumber 7
+2024-05-03 18:02:25,334<--1:info depth 22 currmove h7h6 currmovenumber 8
+2024-05-03 18:02:25,334<--1:info depth 22 currmove b8a6 currmovenumber 9
+2024-05-03 18:02:25,334<--1:info depth 22 currmove g8f6 currmovenumber 10
+2024-05-03 18:02:25,334<--1:info depth 22 currmove b7b5 currmovenumber 11
+2024-05-03 18:02:25,334<--1:info depth 22 currmove a7a6 currmovenumber 12
+2024-05-03 18:02:25,334<--1:info depth 22 currmove f7f6 currmovenumber 13
+2024-05-03 18:02:25,334<--1:info depth 22 currmove g7g6 currmovenumber 14
+2024-05-03 18:02:25,334<--1:info depth 22 currmove f7f5 currmovenumber 15
+2024-05-03 18:02:25,334<--1:info depth 22 currmove a7a5 currmovenumber 16
+2024-05-03 18:02:25,334<--1:info depth 22 currmove g8h6 currmovenumber 17
+2024-05-03 18:02:25,334<--1:info depth 22 currmove b7b6 currmovenumber 18
+2024-05-03 18:02:25,335<--1:info depth 22 currmove g7g5 currmovenumber 19
+2024-05-03 18:02:25,335<--1:info depth 22 currmove h7h5 currmovenumber 20
+2024-05-03 18:02:25,335<--1:info depth 24 seldepth 41 multipv 1 score cp 3 nodes 18322524 nps 2159147 hashfull 999 tbhits 0 time 8486 pv e7e6 d2d4 d7d5 b1d2 c7c5 g1f3 g8f6 e4e5 f6d7 c2c3 b8c6 f1d3 c5d4 c3d4 d8b6 e1g1 c6d4 f3d4 b6d4 d2f3 d4b6 d1e2 f8e7 c1e3 b6c7 e3d4 e8g8 h2h3
+2024-05-03 18:02:25,335<--1:info depth 25 currmove e7e6 currmovenumber 1
+2024-05-03 18:02:26,092<--1:info depth 25 currmove e7e5 currmovenumber 2
+2024-05-03 18:02:26,202<--1:info depth 25 currmove b8c6 currmovenumber 3
+2024-05-03 18:02:26,220<--1:info depth 25 currmove d7d6 currmovenumber 4
+2024-05-03 18:02:26,239<--1:info depth 25 currmove g8f6 currmovenumber 5
+2024-05-03 18:02:26,245<--1:info depth 25 currmove c7c6 currmovenumber 6
+2024-05-03 18:02:26,247<--1:info depth 25 currmove h7h6 currmovenumber 7
+2024-05-03 18:02:26,251<--1:info depth 25 currmove f7f5 currmovenumber 8
+2024-05-03 18:02:26,265<--1:info depth 25 currmove b7b5 currmovenumber 9
+2024-05-03 18:02:26,268<--1:info depth 25 currmove d7d5 currmovenumber 10
+2024-05-03 18:02:26,268<--1:info depth 25 currmove g7g6 currmovenumber 11
+2024-05-03 18:02:26,270<--1:info depth 25 currmove a7a6 currmovenumber 12
+2024-05-03 18:02:26,271<--1:info depth 25 currmove f7f6 currmovenumber 13
+2024-05-03 18:02:26,272<--1:info depth 25 currmove g7g5 currmovenumber 14
+2024-05-03 18:02:26,274<--1:info depth 25 currmove g8h6 currmovenumber 15
+2024-05-03 18:02:26,275<--1:info depth 25 currmove c7c5 currmovenumber 16
+2024-05-03 18:02:26,290<--1:info depth 25 currmove b8a6 currmovenumber 17
+2024-05-03 18:02:26,290<--1:info depth 25 currmove b7b6 currmovenumber 18
+2024-05-03 18:02:26,291<--1:info depth 25 currmove h7h5 currmovenumber 19
+2024-05-03 18:02:26,293<--1:info depth 25 currmove a7a5 currmovenumber 20
+2024-05-03 18:02:26,293<--1:info depth 25 seldepth 34 multipv 1 score cp -5 upperbound nodes 20341826 nps 2153485 hashfull 999 tbhits 0 time 9446 pv e7e6 d2d4
+2024-05-03 18:02:26,293<--1:info depth 25 currmove e7e6 currmovenumber 1
+2024-05-03 18:02:26,435<--1:info depth 25 currmove e7e5 currmovenumber 2
+2024-05-03 18:02:26,459<--1:info depth 25 currmove d7d5 currmovenumber 3
+2024-05-03 18:02:26,465<--1:info depth 25 currmove g8f6 currmovenumber 4
+2024-05-03 18:02:26,467<--1:info depth 25 currmove c7c5 currmovenumber 5
+2024-05-03 18:02:26,486<--1:info depth 25 currmove c7c6 currmovenumber 6
+2024-05-03 18:02:26,487<--1:info depth 25 currmove b8c6 currmovenumber 7
+2024-05-03 18:02:26,488<--1:info depth 25 currmove d7d6 currmovenumber 8
+2024-05-03 18:02:26,489<--1:info depth 25 currmove b7b5 currmovenumber 9
+2024-05-03 18:02:26,489<--1:info depth 25 currmove a7a6 currmovenumber 10
+2024-05-03 18:02:26,490<--1:info depth 25 currmove h7h6 currmovenumber 11
+2024-05-03 18:02:26,491<--1:info depth 25 currmove f7f5 currmovenumber 12
+2024-05-03 18:02:26,492<--1:info depth 25 currmove f7f6 currmovenumber 13
+2024-05-03 18:02:26,492<--1:info depth 25 currmove h7h5 currmovenumber 14
+2024-05-03 18:02:26,493<--1:info depth 25 currmove b8a6 currmovenumber 15
+2024-05-03 18:02:26,494<--1:info depth 25 currmove b7b6 currmovenumber 16
+2024-05-03 18:02:26,494<--1:info depth 25 currmove g7g6 currmovenumber 17
+2024-05-03 18:02:26,494<--1:info depth 25 currmove a7a5 currmovenumber 18
+2024-05-03 18:02:26,494<--1:info depth 25 currmove g8h6 currmovenumber 19
+2024-05-03 18:02:26,494<--1:info depth 25 currmove g7g5 currmovenumber 20
+2024-05-03 18:02:26,495<--1:info depth 25 seldepth 34 multipv 1 score cp -15 upperbound nodes 20766359 nps 2152623 hashfull 999 tbhits 0 time 9647 pv e7e6 d2d4
+2024-05-03 18:02:26,495<--1:info depth 25 currmove e7e6 currmovenumber 1
+2024-05-03 18:02:27,546<--1:info depth 25 seldepth 34 multipv 1 score cp -5 lowerbound nodes 23031593 nps 2152686 hashfull 999 tbhits 0 time 10699 pv e7e6
+2024-05-03 18:02:27,546<--1:info depth 24 currmove e7e6 currmovenumber 1
+2024-05-03 18:02:27,839<--1:info depth 24 currmove e7e5 currmovenumber 2
+2024-05-03 18:02:27,839<--1:info depth 24 currmove b8c6 currmovenumber 3
+2024-05-03 18:02:27,839<--1:info depth 24 currmove c7c5 currmovenumber 4
+2024-05-03 18:02:27,839<--1:info depth 24 currmove c7c6 currmovenumber 5
+2024-05-03 18:02:27,839<--1:info depth 24 currmove d7d5 currmovenumber 6
+2024-05-03 18:02:27,839<--1:info depth 24 currmove g8f6 currmovenumber 7
+2024-05-03 18:02:27,839<--1:info depth 24 currmove b7b5 currmovenumber 8
+2024-05-03 18:02:27,839<--1:info depth 24 currmove d7d6 currmovenumber 9
+2024-05-03 18:02:27,840<--1:info depth 24 currmove a7a6 currmovenumber 10
+2024-05-03 18:02:27,840<--1:info depth 24 currmove f7f5 currmovenumber 11
+2024-05-03 18:02:27,840<--1:info depth 24 currmove g7g5 currmovenumber 12
+2024-05-03 18:02:27,840<--1:info depth 24 currmove h7h6 currmovenumber 13
+2024-05-03 18:02:27,840<--1:info depth 24 currmove f7f6 currmovenumber 14
+2024-05-03 18:02:27,840<--1:info depth 24 currmove g7g6 currmovenumber 15
+2024-05-03 18:02:27,840<--1:info depth 24 currmove b8a6 currmovenumber 16
+2024-05-03 18:02:27,840<--1:info depth 24 currmove b7b6 currmovenumber 17
+2024-05-03 18:02:27,840<--1:info depth 24 currmove g8h6 currmovenumber 18
+2024-05-03 18:02:27,840<--1:info depth 24 currmove a7a5 currmovenumber 19
+2024-05-03 18:02:27,840<--1:info depth 24 currmove h7h5 currmovenumber 20
+2024-05-03 18:02:27,852<--1:info depth 25 seldepth 34 multipv 1 score cp -11 nodes 23580071 nps 2151466 hashfull 999 tbhits 0 time 10960 pv e7e6 d2d4 d7d5 b1d2 c7c5 g1f3 g8f6 e4e5 f6d7 c2c3 b8c6 f1d3 f8e7 e1g1 c5c4 d3c2 b7b5 f1e1 b5b4 d2f1 b4c3 b2c3 a8b8 f1g3 h7h5 h2h3 c8b7 g3f1
+2024-05-03 18:02:27,853<--1:bestmove e7e6 ponder d2d4
+2024-05-03 18:02:27,853*1*Found move:e7-e6
+ 

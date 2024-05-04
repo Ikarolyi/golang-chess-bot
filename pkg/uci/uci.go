@@ -1,12 +1,23 @@
 package uci
 
-import "fmt"
+import (
+	"bufio"
+	"log"
+	"log/syslog"
+	"os"
+	"strings"
 
-import "log"
-import "log/syslog"
+	"github.com/ikaroly/gobot/pkg/game"
+)
+
+// UCI standard: https://www.wbec-ridderkerk.nl/html/UCIProtocol.html
+
+const EngineName = "GOBOT"
+const EngineAuthor = "ikarolyi"
 
 type Engine struct {
   log_file *syslog.Writer
+  position game.Board
 }
 
 type Server interface {
@@ -25,8 +36,11 @@ func (e Engine) Init() {
 }
 
 func (e Engine) Read() string {
-	var event string
-  fmt.Scanf("%s", &event)
+  // var event string
+
+  reader := bufio.NewReader(os.Stdin)
+  event, _ := reader.ReadString('\n')
+  // fmt.Fscanln(reader, &event)  
 
   return event
 }
@@ -34,11 +48,38 @@ func (e Engine) Read() string {
 func (e Engine) Listen() {
   for {
     var event = e.Read()
-    if(event == "Quit") {
-      log.Println("Quit")
-      break
-    }else if(event != ""){
-      log.Println(event)
+    switch strings.Split(event, " ")[0]{
+      case "Quit":{
+        log.Println("Quit")
+        break
+      }
+      case "uci":{
+        identify()
+        println("uciok")
+      }
+      case "isready":{
+        // TODO confiurations
+        println("readyok")
+      }
+      case "position":{
+        // 2024-05-03 17:49:45,072-->1:position startpos moves e2e4
+        var fen = strings.Split(event, " ")[1]
+        e.position = game.NewPosition(fen) 
+      }
+      default: {
+        log.Println("Unknown command: ", event)
+      }
     }
+    // if(event == "Quit") {
+    //   log.Println("Quit")
+    //   break
+    // }else if(event != ""){
+    //   log.Println(event)
+    // }
   }
+}
+
+func identify() {
+  println("id name " + EngineName)
+  println("id author " + EngineAuthor)
 }

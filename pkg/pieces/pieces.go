@@ -1,6 +1,11 @@
 package pieces
 
-import "github.com/ikaroly/gobot/pkg/bitboard"
+import (
+	"math"
+	"unicode"
+
+	"github.com/ikaroly/gobot/pkg/bitboard"
+)
 
 // import "github.com/ikaroly/gobot/pkg/bitboard"
 
@@ -69,4 +74,26 @@ func (p Piece) on_back_rank() bool{
 	}else{
 		return bitboard.GetRank(p.Position) == 0
 	}
-} 
+}
+
+func NewPiece(char rune, exponent float64) Piece{
+	var new_piece = new(Piece)
+	switch unicode.ToUpper(char) {
+		case 'P':
+			new_piece.Class = PAWN
+		case 'N':
+			new_piece.Class = KNIGHT
+		case 'B':
+			new_piece.Class = BISHOP
+		case 'R':
+			new_piece.Class = ROOK
+		case 'Q':
+			new_piece.Class = QUEEN
+		case 'K':
+			new_piece.Class = KING
+	}
+	new_piece.IsWhite = !unicode.IsUpper(char)
+	new_piece.Position = uint64(math.Pow(2, exponent))
+
+	return *new_piece
+}
