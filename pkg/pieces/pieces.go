@@ -19,9 +19,12 @@ const ROOK = 3
 const QUEEN = 4
 const KING = 5
 
+const WHITE = 1
+const BLACK = -1
+
 
 type Piece struct {
-	IsWhite bool;
+	Color int;
 	Position uint64
 	Class int
 }
@@ -30,6 +33,7 @@ type Moves interface {
 	get_moves() uint64
 	get_value() int
 	on_back_rank() bool
+	GetColorStr() string
 }
 
 func (p Piece) get_moves() uint64{
@@ -69,7 +73,7 @@ func (p Piece) get_value() int{
 }
 
 func (p Piece) on_back_rank() bool{
-	if p.IsWhite{
+	if p.Color == WHITE{
 		return bitboard.GetRank(p.Position) == 8
 	}else{
 		return bitboard.GetRank(p.Position) == 0
@@ -92,8 +96,23 @@ func NewPiece(char rune, exponent float64) Piece{
 		case 'K':
 			new_piece.Class = KING
 	}
-	new_piece.IsWhite = !unicode.IsUpper(char)
+
+	if unicode.IsUpper(char) {
+		new_piece.Color = WHITE
+	}else{
+		new_piece.Color = BLACK
+	}
+
+
 	new_piece.Position = uint64(math.Pow(2, exponent))
 
 	return *new_piece
+}
+
+func (p Piece) GetColorStr() string{
+	if p.Color == WHITE{
+		return "W"
+	}else{
+		return "B"
+	}
 }

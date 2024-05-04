@@ -11,7 +11,7 @@ type Pawn interface {
 }
 
 func (p Piece) is_pawn_untouched() bool{
-	if p.IsWhite{
+	if p.Color == WHITE{
 		return bitboard.GetRank(p.Position) == 8
 	}else{
 		return bitboard.GetRank(p.Position) == 0
@@ -22,7 +22,7 @@ func (p Piece) pawn_kicks() uint64{
 	var retVal uint64
 
 	// Push forward
-	if p.IsWhite{
+	if p.Color == WHITE{
 		retVal = p.Position << 8
 	}else{
 		retVal = p.Position >> 8
@@ -38,7 +38,7 @@ func (p Piece) pawn_pushes() uint64{
 	var retVal uint64
 
 	//first row
-	if p.IsWhite{
+	if p.Color == WHITE{
 		retVal = p.Position << 8
 	}else{
 		retVal = p.Position >> 8
@@ -55,7 +55,7 @@ func (p Piece) pawn_double_pushes() uint64{
 	var retVal uint64
 
 	//first row
-	if p.IsWhite{
+	if p.Color == WHITE{
 		retVal = p.Position << 16
 	}else{
 		retVal = p.Position >> 16

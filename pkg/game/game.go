@@ -4,6 +4,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/ikaroly/gobot/pkg/bitboard"
 	"github.com/ikaroly/gobot/pkg/pieces"
 )
 
@@ -11,8 +12,13 @@ const StartPos = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 const Numbers = "0123456789"
 
 type Board struct {
-	pieces []pieces.Piece
-	moves uint
+	Pieces []pieces.Piece
+	Moves uint
+	SideToMove int
+	Castling byte //0b0000KQkq
+	EnPassantTarget uint64
+	HalfmoveCounter int
+	FullmoveCounter int
 }
 
 type Chess interface {
@@ -30,13 +36,14 @@ func NewPosition(fen string) Board{
 	var split_fen = strings.Split(fen, " ")
 	var setup = split_fen[0]
 
+	//Set up position
 	var i_mod = 0
 	var new_pieces = []pieces.Piece{}
 	for i, char := range setup {
 		if char == '/'{
 			i_mod -= 1
 			continue
-		}else if strings.Contains(Numbers, string(char)){
+		}else if strings.ContainsRune(Numbers, char){
 			var diff, _ = strconv.Atoi(string(char))
 			i_mod += diff - 1
 		}else{
@@ -44,7 +51,40 @@ func NewPosition(fen string) Board{
 			new_pieces = append(new_pieces, new_piece)
 		}
 	}
-	new_board.pieces = new_pieces
+	new_board.Pieces = new_pieces
+
+	//Set up color
+	if split_fen[1] == "w"{
+		new_board.SideToMove = pieces.WHITE
+	}else{
+		new_board.SideToMove = pieces.BLACK
+	}
+
+	//Set up castling
+	var castling_fen = split_fen[2]
+	new_board.Castling = byte(0b00000000)
+	if strings.Contains(castling_fen, "K"){
+		new_board.Castling |= byte(0b00001000)
+	}
+	if strings.Contains(castling_fen, "Q"){
+		new_board.Castling |= byte(0b00000100)
+	}
+	if strings.Contains(castling_fen, "k"){
+		new_board.Castling |= byte(0b00000010)
+	}
+	if strings.Contains(castling_fen, "q"){
+		new_board.Castling |= byte(0b00000001)
+	}
+
+	//Set up en passant
+	new_board.EnPassantTarget = 0
+	if split_fen[3] != "-"{
+		new_board.EnPassantTarget = bitboard.Encode(split_fen[3])
+	}
+
+	//Counters
+	new_board.HalfmoveCounter, _ = strconv.Atoi(split_fen[4])
+	new_board.FullmoveCounter, _ = strconv.Atoi(split_fen[5])
 
 	return *new_board
 }

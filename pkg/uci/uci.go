@@ -46,29 +46,27 @@ func (e Engine) Read() string {
 }
 
 func (e Engine) Listen() {
+  mainloop:
   for {
     var event = e.Read()
-    switch strings.Split(event, " ")[0]{
-      case "Quit":{
+    switch strings.TrimSpace(strings.Split(event, " ")[0]){
+      case "Quit":
         log.Println("Quit")
-        break
-      }
-      case "uci":{
-        identify()
+        break mainloop
+      case "uci":
+        identify() 
         println("uciok")
-      }
-      case "isready":{
+      case "isready":
         // TODO confiurations
         println("readyok")
-      }
-      case "position":{
+      case "position":
         // 2024-05-03 17:49:45,072-->1:position startpos moves e2e4
-        var fen = strings.Split(event, " ")[1]
-        e.position = game.NewPosition(fen) 
-      }
-      default: {
+        var _, fen, found = strings.Cut(event, " ")
+        if found {
+          e.position = game.NewPosition(fen)
+        }
+      default: 
         log.Println("Unknown command: ", event)
-      }
     }
     // if(event == "Quit") {
     //   log.Println("Quit")
