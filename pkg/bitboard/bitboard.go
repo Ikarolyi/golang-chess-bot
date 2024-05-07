@@ -9,6 +9,9 @@ import (
 
 const files = "abcdefgh"
 
+const FileA uint64 = 0b1000000010000000100000001000000010000000100000001000000010000000
+const Rank8 uint64 = 0b11111111
+
 func GetRank(p uint64) uint{
 	return uint(8 - math.Floor(float64(GetPlace(p))/8))
 }
