@@ -31,9 +31,10 @@ type Piece struct {
 
 type Moves interface {
 	get_moves() uint64
-	get_value() int
+	GetValue() int
 	on_back_rank() bool
 	GetColorStr() string
+	ToString() string
 }
 
 func (p Piece) get_moves() uint64{
@@ -54,7 +55,7 @@ func (p Piece) get_moves() uint64{
 	return 0 //Shall never happen
 }
 
-func (p Piece) get_value() int{
+func (p Piece) GetValue() int{
 	switch class := p.Class; class{
 		case PAWN:
 			return 1
@@ -115,4 +116,24 @@ func (p Piece) GetColorStr() string{
 	}else{
 		return "B"
 	}
+}
+
+func (p Piece) ToString() string{
+	var classRepr string
+	switch p.Class{
+		case PAWN:
+			classRepr = "P"
+		case BISHOP:
+			classRepr = "B"
+		case KNIGHT:
+			classRepr = "N"
+		case ROOK:
+			classRepr = "R"
+		case QUEEN:
+			classRepr = "Q"
+		case KING:
+			classRepr = "K"
+	}
+
+	return p.GetColorStr() + " " + classRepr + "@" + bitboard.ToString(p.Position)
 }

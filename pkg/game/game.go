@@ -13,7 +13,7 @@ const Numbers = "0123456789"
 
 type Board struct {
 	Pieces []pieces.Piece
-	Moves uint
+	Moves int
 	SideToMove int
 	Castling byte //0b0000KQkq
 	EnPassantTarget uint64
@@ -24,6 +24,8 @@ type Board struct {
 type Chess interface {
 	is_checkmate() int
 	is_stalemate() bool
+	MoveAll()
+	Move()
 }
 
 func NewPosition(fen string) Board{
@@ -85,6 +87,57 @@ func NewPosition(fen string) Board{
 	//Counters
 	new_board.HalfmoveCounter, _ = strconv.Atoi(split_fen[4])
 	new_board.FullmoveCounter, _ = strconv.Atoi(split_fen[5])
-
+	
 	return *new_board
+}
+
+func MoveBits(b Board, from uint64, to uint64) Board{
+	var piece_to_move_i int
+	var kicked_piece_i int = -1
+	for i, piece := range b.Pieces{
+		if piece.Position == from{
+			piece_to_move_i = i
+			break
+		}else if piece.Position == to{
+			kicked_piece_i = i
+		}
+	}
+	if kicked_piece_i != -1{
+		if kicked_piece_i < piece_to_move_i{
+			piece_to_move_i -= 1
+		}
+		b.Pieces = GetSetWithoutPieceI(b.Pieces, kicked_piece_i)
+	}
+	b.Pieces[piece_to_move_i].Position = to
+
+	return b
+}
+
+func (b *Board) Move(moveFromTo string) {
+	var from = bitboard.Encode(moveFromTo[0:2])
+	var to = bitboard.Encode(moveFromTo[2:4])
+
+	*b = MoveBits(*b, from, to)
+	b.Moves += 1
+}
+
+func GetSetWithoutPieceI(piece_set []pieces.Piece, index int) []pieces.Piece{
+	// b.Pieces = append(b.Pieces[:index], b.Pieces[index+1:]...)
+	return append(piece_set[:index], piece_set[index+1:]...)
+}
+
+func (b *Board) MoveAll(moves []string){
+	for _, move := range moves{
+		b.Move(move)
+	}
+}
+
+func (b Board) ToString() string{
+	var retVal = ""
+
+	for _, p := range b.Pieces{
+		retVal += p.ToString() + "\n"
+	}
+
+	return retVal
 }

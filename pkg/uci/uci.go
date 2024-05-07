@@ -60,10 +60,19 @@ func (e Engine) Listen() {
         // TODO confiurations
         println("readyok")
       case "position":
-        // 2024-05-03 17:49:45,072-->1:position startpos moves e2e4
+        // The position must be refreshed all the time <- "UCI is stateless"
         var _, fen, found = strings.Cut(event, " ")
         if found {
-          e.position = game.NewPosition(fen)
+          var fen, after, found = strings.Cut(fen, " moves ")
+          if found{
+            var moves = strings.Split(after, " ")
+            e.position = game.NewPosition(fen)
+
+            e.position.MoveAll(moves)
+
+            log.Println(e.position.ToString())
+            log.Println(len(e.position.Pieces))
+          }
         }
       default: 
         log.Println("Unknown command: ", event)

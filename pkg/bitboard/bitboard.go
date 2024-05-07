@@ -7,14 +7,14 @@ import (
 	"strings"
 )
 
-const files = "ABCDEFGH"
+const files = "abcdefgh"
 
 func GetRank(p uint64) uint{
-	return uint(math.Floor(float64(GetPlace(p))/8))
+	return uint(8 - math.Floor(float64(GetPlace(p))/8))
 }
 
 func GetFile(p uint64) uint{
-	return GetPlace(p) % 8
+	return (GetPlace(p) % 8)
 }
 
 func GetPlace(p uint64) uint {
@@ -22,7 +22,7 @@ func GetPlace(p uint64) uint {
 }
 
 func ToString(p uint64) string {
-	return string(files[GetRank(p) + 1]) + fmt.Sprint(GetRank(p))
+	return string(files[GetFile(p)]) + fmt.Sprint(GetRank(p))
 }
 
 func Encode(in string) uint64 {
