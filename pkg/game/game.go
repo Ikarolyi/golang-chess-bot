@@ -19,6 +19,7 @@ type Board struct {
 	EnPassantTarget uint64
 	HalfmoveCounter int
 	FullmoveCounter int
+	BoardCombined bitboard.CombinedBoard
 }
 
 type Chess interface {
@@ -91,14 +92,14 @@ func NewPosition(fen string) Board{
 	return *new_board
 }
 
-func MoveBits(b Board, from uint64, to uint64) Board{
+func MoveBits(b Board, move bitboard.Move) Board{
 	var piece_to_move_i int
 	var kicked_piece_i int = -1
 	for i, piece := range b.Pieces{
-		if piece.Position == from{
+		if piece.Position == move.From{
 			piece_to_move_i = i
 			break
-		}else if piece.Position == to{
+		}else if piece.Position == move.To{
 			kicked_piece_i = i
 		}
 	}
@@ -108,16 +109,31 @@ func MoveBits(b Board, from uint64, to uint64) Board{
 		}
 		b.Pieces = GetSetWithoutPieceI(b.Pieces, kicked_piece_i)
 	}
-	b.Pieces[piece_to_move_i].Position = to
+	b.Pieces[piece_to_move_i].Position = move.To
 
+	b.BoardCombined = b.GetBoardCombined()
+	
 	return b
+}
+
+func (b Board) GetBoardCombined() bitboard.CombinedBoard {
+	var white uint64 = 0
+	var black uint64 = 0
+	for _, piece := range b.Pieces{
+		if piece.Color == pieces.WHITE{
+			white |= piece.Position
+		}else{
+			black |= piece.Position
+		}
+	}
+	return bitboard.CombinedBoard{White: white, Black: black}
 }
 
 func (b *Board) Move(moveFromTo string) {
 	var from = bitboard.Encode(moveFromTo[0:2])
 	var to = bitboard.Encode(moveFromTo[2:4])
 
-	*b = MoveBits(*b, from, to)
+	*b = MoveBits(*b, bitboard.Move{From: from, To: to})
 	b.Moves += 1
 }
 

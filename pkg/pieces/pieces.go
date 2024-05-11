@@ -37,22 +37,22 @@ type Moves interface {
 	ToString() string
 }
 
-func (p Piece) get_moves() uint64{
+func (p Piece) GetMoves(boardCombined bitboard.CombinedBoard, enPassantTarget uint64) []bitboard.Move{
 	switch class := p.Class; class{
 		case PAWN:
-			return p.pawn_pushes()
+			return p.GetPawnMoves(boardCombined, enPassantTarget)
 		case KNIGHT:
-			return 3
+			return nil
 		case BISHOP:
-			return 3
+			return p.GetBishopMoves(boardCombined)
 		case ROOK:
-			return 5
+			return p.GetRookMoves(boardCombined)
 		case QUEEN:
-			return 9
+			return p.GetQueenMoves(boardCombined)
 		case KING:
-			return 0
+			return nil
 	}
-	return 0 //Shall never happen
+	return nil //Shall never happen
 }
 
 func (p Piece) GetValue() int{
