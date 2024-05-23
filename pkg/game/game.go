@@ -43,7 +43,7 @@ func NewPosition(fen string) Board{
 	var split_fen = strings.Split(fen, " ")
 	var setup = split_fen[0]
 	
-	//Set up position
+	// Set up position
 	var i_mod = 0
 	var new_pieces = []pieces.Piece{}
 	for i, char := range setup {
@@ -54,13 +54,14 @@ func NewPosition(fen string) Board{
 			var diff, _ = strconv.Atoi(string(char))
 			i_mod += diff - 1
 		}else{
-			var new_piece = pieces.NewPiece(char, float64(i + i_mod))
+			var new_piece = pieces.NewPiece(char, float64(63 - (i + i_mod))) // Reversed to match the board notation
 			new_pieces = append(new_pieces, new_piece)
+			
 		}
 	}
 	new_board.Pieces = new_pieces
 	
-	//Set up color
+	// Set up color
 	if split_fen[1] == "w"{
 	new_board.SideToMove = pieces.WHITE
 	}else{
@@ -165,6 +166,7 @@ func (b Board) GetBoardCombined() bitboard.CombinedBoard {
 	}
 	
 	func GetSetWithoutPieceI(piece_set []pieces.Piece, index int) []pieces.Piece{
+		println("d")
 		// b.Pieces = append(b.Pieces[:index], b.Pieces[index+1:]...)
 		return append(piece_set[:index], piece_set[index+1:]...)
 	}
