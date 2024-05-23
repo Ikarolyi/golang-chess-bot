@@ -1,0 +1,4 @@
+github.com/mitchellh/reflectwalk v1.0.2 h1:G2LzWKi524PWgd3mLHV8Y5k7s6XUvT0Gef6zxSIeXaQ=
+github.com/mitchellh/reflectwalk v1.0.2/go.mod h1:mSTlrgnPZtwu0c4WaC2kGObEpuNDbx0jmZXqmk4esnw=
+golang.design/x/reflect v0.0.0-20220504060917-02c43be63f3b h1:lkOPTy76R9NZ6FeDQWkDj3NsLtD8Csc9AAFYEl3kiME=
+golang.design/x/reflect v0.0.0-20220504060917-02c43be63f3b/go.mod h1:QXG482h3unP32W/YwIPOc+09bvY447B7T+iLjC/JPcA=

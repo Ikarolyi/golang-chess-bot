@@ -17,7 +17,7 @@ func (p Piece) GetRookMoves(boardCombined bitboard.CombinedBoard) []bitboard.Mov
 	var result []bitboard.Move
 
 	for _, direction := range RookMoveVectors{
-		result = append(result, bitboard.RayCastMovement(p.Position, p.Color, boardCombined, direction)...)
+		result = append(result, bitboard.RayCastMovement(p.Position, p.Color, boardCombined, direction, bitboard.UNLIMITED)...)
 	}
 	return result
 }

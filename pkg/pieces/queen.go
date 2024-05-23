@@ -12,7 +12,7 @@ func (p Piece) GetQueenMoves(boardCombined bitboard.CombinedBoard) []bitboard.Mo
 	var result []bitboard.Move
 
 	for _, direction := range QueenMoveVectors{
-		result = append(result, bitboard.RayCastMovement(p.Position, p.Color, boardCombined, direction)...)
+		result = append(result, bitboard.RayCastMovement(p.Position, p.Color, boardCombined, direction, bitboard.UNLIMITED)...)
 	}
 	return result
 }

@@ -1,3 +1,11 @@
+/*
+A8 ^ 2#3 E8
+	 | ###
+	 | ###
+A1 +-0#1->E1
+
+    ^ The numbers are in the ascending order of the uint64 bitboard exponents
+*/
 package bitboard
 
 import (
@@ -7,6 +15,7 @@ import (
 	"strings"
 )
 
+
 const files = "abcdefgh"
 
 const FileA uint64 = 0b1000000010000000100000001000000010000000100000001000000010000000
@@ -15,6 +24,7 @@ const Rank8 uint64 = 0b11111111
 const Diagonal uint64 = 		0b1000000001000000001000000001000000001000000001000000001000000001
 const AntiDiagonal uint64 = 0b0000000100000010000001000000100000010000001000000100000010000000
 
+//Move{From, To}
 type Move struct {
 	From uint64
 	To uint64
@@ -25,12 +35,12 @@ func BitShiftPos(pos uint64, by int) uint64{
 	if by > 0{
 		return pos << by
 	}else{
-		return pos >> by
+		return pos >> -by
 	}
 }
 
 func GetRank(p uint64) uint{
-	return uint(8 - math.Floor(float64(GetPlace(p))/8))
+	return uint(math.Floor(float64(GetPlace(p))/8)) + 1
 }
 
 func GetFile(p uint64) uint{
@@ -41,24 +51,30 @@ func GetPlace(p uint64) uint {
 	return uint(math.Log2(float64(p)))
 }
 
-func ToString(p uint64) string {
+func MakeSquare(file int, rank int) uint64{
+	return 1 << (file + (8*(rank-1)))
+}
+
+func Decode(p uint64) string {
 	return string(files[GetFile(p)]) + fmt.Sprint(GetRank(p))
 }
 
 func Encode(in string) uint64 {
 	var splitin = strings.Split(in, "")
 	var rank, _ = strconv.Atoi(splitin[1])
+
 	var file_ascii = splitin[0][0]
 	var file = 0
 
 	
 	if file_ascii > 90{
-		file = int(file_ascii) - 96 //Uppercase
+		file = int(file_ascii) - 97 //Uppercase 96
 	}else{
-		file = int(file_ascii) - 64 //Lowercase
+		file = int(file_ascii) - 65 //Lowercase 64
 	}
+	_ = rank
 
-	return uint64(math.Pow(2, float64(file + rank*8)))
+	return MakeSquare(file, rank)
 }
 
 func IsSquareEmpty(square uint64, boardCombined uint64) bool{
@@ -91,8 +107,11 @@ func GetDistanceFromEdge(square uint64, direction Vector) int{
 	return int(result)
 }
 
-func RayCastMovement(square uint64, color int, boardCombined CombinedBoard, direction Vector) []Move {
-	var distance = GetDistanceFromEdge(square, direction)
+const UNLIMITED = 0
+
+//UNLIMITED is a valid limit
+func RayCastMovement(square uint64, color int8, boardCombined CombinedBoard, direction Vector, limit int) []Move {
+	var distance = int(math.Min(float64(GetDistanceFromEdge(square, direction)), float64((limit))))
 	var result []Move
 
 	for i := 1; i <= distance; i++{
@@ -108,4 +127,11 @@ func RayCastMovement(square uint64, color int, boardCombined CombinedBoard, dire
 		}
 	}
 	return result
+}
+
+func RayCastPawn(square uint64, color int8, boardCombined CombinedBoard, direction Vector, limit int) []Move {
+	boardCombined.White = boardCombined.GetTrueCombined()
+	boardCombined.Black = boardCombined.White
+	
+	return RayCastMovement(square, color, boardCombined, direction, limit)
 }

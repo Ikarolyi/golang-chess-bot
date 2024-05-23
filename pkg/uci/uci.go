@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/ikaroly/gobot/pkg/game"
+	"github.com/ikaroly/gobot/pkg/search"
 )
 
 // UCI standard: https://www.wbec-ridderkerk.nl/html/UCIProtocol.html
@@ -70,10 +71,15 @@ func (e Engine) Listen() {
 
             e.position.MoveAll(moves)
 
-            log.Println(e.position.ToString())
             log.Println(len(e.position.Pieces))
           }
         }
+      case "go":
+        println(len(search.GetBoardMoves(e.position)))
+        log.Println(e.position.ToString())
+      case "debug":
+        println(e.position.ToString())
+        println("Total ", len(e.position.Pieces))
       default: 
         log.Println("Unknown command: ", event)
     }

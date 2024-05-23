@@ -7,24 +7,23 @@ import (
 	"github.com/ikaroly/gobot/pkg/bitboard"
 )
 
-// import "github.com/ikaroly/gobot/pkg/bitboard"
 
-//sakkok
 const PAWN = 0
 
-//tiszák
 const KNIGHT = 1
 const BISHOP = 2
 const ROOK = 3
 const QUEEN = 4
 const KING = 5
 
-const WHITE = 1
-const BLACK = -1
+const WHITE int8 = 1
+const BLACK int8 = -1
+
+const EMPTYINDEX int = -1
 
 
 type Piece struct {
-	Color int;
+	Color int8;
 	Position uint64
 	Class int
 }
@@ -47,7 +46,7 @@ func (p Piece) GetMoves(boardCombined bitboard.CombinedBoard, enPassantTarget ui
 			return p.GetBishopMoves(boardCombined)
 		case ROOK:
 			return p.GetRookMoves(boardCombined)
-		case QUEEN:
+		case QUEEN:	
 			return p.GetQueenMoves(boardCombined)
 		case KING:
 			return nil
@@ -71,14 +70,6 @@ func (p Piece) GetValue() int{
 			return 0
 	}
 	return 0 //Shall never happen
-}
-
-func (p Piece) on_back_rank() bool{
-	if p.Color == WHITE{
-		return bitboard.GetRank(p.Position) == 8
-	}else{
-		return bitboard.GetRank(p.Position) == 0
-	}
 }
 
 func NewPiece(char rune, exponent float64) Piece{
@@ -135,5 +126,5 @@ func (p Piece) ToString() string{
 			classRepr = "K"
 	}
 
-	return p.GetColorStr() + " " + classRepr + "@" + bitboard.ToString(p.Position)
+	return p.GetColorStr() + " " + classRepr + "@" + bitboard.Decode(p.Position)
 }

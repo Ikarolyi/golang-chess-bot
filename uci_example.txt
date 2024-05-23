@@ -309,3 +309,5 @@ Arena 3.10beta
 2024-05-03 18:02:27,853*1*Found move:e7-e6
 
 2024-05-06 19:54:01,227-->1: position startpos moves e2e4 e7e6 d2d4 d7d5 e4d5 f7f5 d5e6 d8d4 d1d4 c8e6 d4e5 f8e7
+
+8/7P/8/8/8/8/8/7P w KQkq - 0 1
