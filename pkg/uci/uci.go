@@ -50,6 +50,7 @@ func (e Engine) Listen() {
   mainloop:
   for {
     var event = e.Read()
+    event = strings.TrimSpace(event)
     switch strings.TrimSpace(strings.Split(event, " ")[0]){
       case "Quit":
         log.Println("Quit")
@@ -76,7 +77,6 @@ func (e Engine) Listen() {
         }
       case "go":
         println(len(search.GetBoardMoves(e.position)))
-        log.Println(e.position.ToString())
       case "debug":
         println(e.position.ToString())
         println("Total ", len(e.position.Pieces))

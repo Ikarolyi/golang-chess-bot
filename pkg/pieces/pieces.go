@@ -16,8 +16,8 @@ const ROOK = 3
 const QUEEN = 4
 const KING = 5
 
-const WHITE int8 = 1
-const BLACK int8 = -1
+const WHITE int8 = -1
+const BLACK int8 = 1
 
 const EMPTYINDEX int = -1
 

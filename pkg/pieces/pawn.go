@@ -25,7 +25,6 @@ func (p Piece) pawnKick(boardCombined bitboard.CombinedBoard, enPassantTarget ui
 		targetSquare := bitboard.Translate(p.Position, kickMove.Multiply(int(p.Color)))
 		if !bitboard.IsSquareEmpty(targetSquare, boardCombined.GetColor(p.Color)){
 			result = append(result, bitboard.Move{From: p.Position, To: targetSquare})
-			println(bitboard.Decode(targetSquare))
 		}
 	}
 
@@ -46,14 +45,11 @@ func (p Piece) GetPawnMoves(boardCombined bitboard.CombinedBoard, enPassantTarge
 
 	if on_default_place{
 		push_len = 2
-		println("NOTYAY")
 	}
 
 	result = append(result, bitboard.RayCastPawn(p.Position, p.Color, boardCombined, pawnForward.Multiply(int(p.Color)), push_len)...)
 
-	result = append(result, p.pawnKick(boardCombined, enPassantTarget)...)
-
-	println(bitboard.Decode(p.Position), "Length ", len(result))
+	// result = append(result, p.pawnKick(boardCombined, enPassantTarget)...)
 
 
 	return result

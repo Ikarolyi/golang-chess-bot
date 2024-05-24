@@ -17,5 +17,5 @@ func (b CombinedBoard) GetColor(color int8) uint64{
 }
 
 func (b CombinedBoard) GetTrueCombined() uint64{
-	return b.White & b.Black
+	return b.White | b.Black
 }

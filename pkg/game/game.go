@@ -166,7 +166,6 @@ func (b Board) GetBoardCombined() bitboard.CombinedBoard {
 	}
 	
 	func GetSetWithoutPieceI(piece_set []pieces.Piece, index int) []pieces.Piece{
-		println("d")
 		// b.Pieces = append(b.Pieces[:index], b.Pieces[index+1:]...)
 		return append(piece_set[:index], piece_set[index+1:]...)
 	}

@@ -24,7 +24,6 @@ func GetPieceMoves(b game.Board, piece_i int) []game.Board{
 	var moves = piece.GetMoves(b.BoardCombined, b.EnPassantTarget)
 
 	for _, move := range moves {
-		// println(move.From)
 		result = append(result, game.MoveBits(b, move))
 	}
 
