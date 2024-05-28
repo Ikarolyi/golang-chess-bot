@@ -7,6 +7,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/ikaroly/gobot/pkg/bitboard"
 	"github.com/ikaroly/gobot/pkg/game"
 	"github.com/ikaroly/gobot/pkg/search"
 )
@@ -78,10 +79,12 @@ func (e Engine) Listen() {
       case "go":
         println(len(search.GetBoardMoves(e.position)))
       case "debug":
-        println(e.position.ToString())
+        println("True combined board", e.position.BoardCombined.GetTrueCombined())
         println("Total ", len(e.position.Pieces))
+        println("E4 is empty: ", bitboard.IsSquareEmpty(bitboard.Encode("E4"), e.position.BoardCombined.GetColor(e.position.SideToMove)))
       default: 
         log.Println("Unknown command: ", event)
+
     }
     // if(event == "Quit") {
     //   log.Println("Quit")

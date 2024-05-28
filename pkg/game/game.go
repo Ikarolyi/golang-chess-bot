@@ -119,16 +119,6 @@ func MoveBits(b Board, move bitboard.Move) Board{
 
 	// TODO optimization
 
-	// for i, piece := range new_board.Pieces{
-	// 	if piece.Position == move.From{
-	// 		piece_to_move_i = i
-	// 		println("f",bitboard.ToString(piece.Position))
-	// 	}else if piece.Position == move.To{
-	// 		captured_piece_i = i
-	// 		println("t", bitboard.ToString(piece.Position))
-	// 	}
-	// }
-
 	// Actually make the move
 	new_board.Pieces[piece_to_move_i].Position = move.To
 	
@@ -140,6 +130,7 @@ func MoveBits(b Board, move bitboard.Move) Board{
 	
 	new_board.BoardCombined = new_board.GetBoardCombined()
 	new_board.SideToMove = -new_board.SideToMove
+	new_board.EnPassantTarget = move.NewEnPassantTarget
 	
 	return new_board
 }
@@ -166,7 +157,6 @@ func (b Board) GetBoardCombined() bitboard.CombinedBoard {
 	}
 	
 	func GetSetWithoutPieceI(piece_set []pieces.Piece, index int) []pieces.Piece{
-		// b.Pieces = append(b.Pieces[:index], b.Pieces[index+1:]...)
 		return append(piece_set[:index], piece_set[index+1:]...)
 	}
 	

@@ -17,7 +17,7 @@ func (p Piece) GetBishopMoves(boardCombined bitboard.CombinedBoard) []bitboard.M
 	var result []bitboard.Move
 
 	for _, direction := range BishopMoveVectors{
-		result = append(result, bitboard.RayCastMovement(p.Position, p.Color, boardCombined, direction, bitboard.UNLIMITED)...)
+		result = append(result, bitboard.RayCastMovement(p.Position, p.Color, boardCombined, direction, bitboard.UNLIMITED, false)...)
 	}
 	return result
 }

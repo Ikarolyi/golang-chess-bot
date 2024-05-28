@@ -18,16 +18,11 @@ import (
 
 const files = "abcdefgh"
 
-const FileA uint64 = 0b1000000010000000100000001000000010000000100000001000000010000000
-const Rank8 uint64 = 0b11111111
-
-const Diagonal uint64 = 		0b1000000001000000001000000001000000001000000001000000001000000001
-const AntiDiagonal uint64 = 0b0000000100000010000001000000100000010000001000000100000010000000
-
 //Move{From, To}
 type Move struct {
 	From uint64
 	To uint64
+	NewEnPassantTarget uint64
 }
 
 // if + {pos << by} if - {pos >> |by|}
@@ -78,7 +73,7 @@ func Encode(in string) uint64 {
 }
 
 func IsSquareEmpty(square uint64, boardCombined uint64) bool{
-	return square == boardCombined & square
+	return square != boardCombined & square
 }
 
 func GetDistanceFromEdge(square uint64, direction Vector) int{
@@ -89,7 +84,7 @@ func GetDistanceFromEdge(square uint64, direction Vector) int{
 	var right_distance = 8 - file
 
 	var upper_distance = rank
-	var lower_distance = 8 - 	rank
+	var lower_distance = 8 - rank
 
 	var result = 10.0
 
@@ -98,6 +93,7 @@ func GetDistanceFromEdge(square uint64, direction Vector) int{
 	}else if direction.X > 0{
 		result = math.Min(result, float64(right_distance))
 	}
+
 	if direction.Y < 0{
 		result = math.Min(result, float64(lower_distance))
 	}else if direction.Y > 0{
@@ -110,28 +106,28 @@ func GetDistanceFromEdge(square uint64, direction Vector) int{
 const UNLIMITED = 0
 
 //UNLIMITED is a valid limit
-func RayCastMovement(square uint64, color int8, boardCombined CombinedBoard, direction Vector, limit int) []Move {
-	var distance = int(math.Min(float64(GetDistanceFromEdge(square, direction)), float64((limit))))
+func RayCastMovement(square uint64, color int8, boardCombined CombinedBoard, direction Vector, limit int, force_capture bool) []Move {
+	var distance = min(GetDistanceFromEdge(square, direction), limit)
 	var result []Move
 
 	for i := 1; i <= distance; i++{
 		var pos = Translate(square, direction.Multiply(i))
-		var occupied = IsSquareEmpty(pos, boardCombined.GetTrueCombined())
-		var occupiedByFriend = IsSquareEmpty(pos, boardCombined.GetColor(color))
+		var occupied = !IsSquareEmpty(pos, boardCombined.GetTrueCombined())
+		var occupiedByFriend = !IsSquareEmpty(pos, boardCombined.GetColor(color))
 		if !occupiedByFriend{
-			result = append(result, Move{square, pos})
+			if !force_capture{
+				result = append(result, Move{From: square, To: pos})
+			}else{
+				break
+			}
 		}
 
 		if occupied{
+			if force_capture{
+				result = append(result, Move{From: square, To: pos})
+			}
 			break
 		}
 	}
 	return result
-}
-
-func RayCastPawn(square uint64, color int8, boardCombined CombinedBoard, direction Vector, limit int) []Move {
-	boardCombined.White = boardCombined.GetTrueCombined()
-	boardCombined.Black = boardCombined.White
-	
-	return RayCastMovement(square, color, boardCombined, direction, limit)
 }
