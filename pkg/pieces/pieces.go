@@ -37,21 +37,23 @@ type Moves interface {
 }
 
 func (p Piece) GetMoves(boardCombined bitboard.CombinedBoard, enPassantTarget uint64) []bitboard.Move{
+	var result []bitboard.Move
 	switch class := p.Class; class{
 		case PAWN:
-			return p.GetPawnMoves(boardCombined, enPassantTarget)
+			result = p.GetPawnMoves(boardCombined, enPassantTarget)
 		case KNIGHT:
-			return nil
+			result = p.GetKnightMoves(boardCombined)
 		case BISHOP:
-			return p.GetBishopMoves(boardCombined)
+			result = p.GetBishopMoves(boardCombined)
 		case ROOK:
-			return p.GetRookMoves(boardCombined)
+			result = p.GetRookMoves(boardCombined)
 		case QUEEN:	
-			return p.GetQueenMoves(boardCombined)
+			result = p.GetQueenMoves(boardCombined)
 		case KING:
-			return nil
+			result = nil			
 	}
-	return nil //Shall never happen
+
+	return result
 }
 
 func (p Piece) GetValue() int{

@@ -1,10 +1,12 @@
 /*
 A8 ^ 2#3 E8
-	 | ###
-	 | ###
+
+	| ###
+	| ###
+
 A1 +-0#1->E1
 
-    ^ The numbers are in the ascending order of the uint64 bitboard exponents
+	^ The numbers are in the ascending order of the uint64 bitboard exponents
 */
 package bitboard
 
@@ -39,7 +41,7 @@ func GetRank(p uint64) uint{
 }
 
 func GetFile(p uint64) uint{
-	return (GetPlace(p) % 8)
+	return (GetPlace(p) % 8) + 1
 }
 
 func GetPlace(p uint64) uint {
@@ -51,7 +53,7 @@ func MakeSquare(file int, rank int) uint64{
 }
 
 func Decode(p uint64) string {
-	return string(files[GetFile(p)]) + fmt.Sprint(GetRank(p))
+	return string(files[GetFile(p)-1]) + fmt.Sprint(GetRank(p))
 }
 
 func Encode(in string) uint64 {
@@ -63,9 +65,9 @@ func Encode(in string) uint64 {
 
 	
 	if file_ascii > 90{
-		file = int(file_ascii) - 97 //Uppercase 96
+		file = int(file_ascii) - 98 //Uppercase 96
 	}else{
-		file = int(file_ascii) - 65 //Lowercase 64
+		file = int(file_ascii) - 66 //Lowercase 64
 	}
 	_ = rank
 
@@ -80,30 +82,30 @@ func GetDistanceFromEdge(square uint64, direction Vector) int{
 	var file = GetFile(square)
 	var rank = GetRank(square)
 
-	var left_distance = file
-	var right_distance = 8 - file
+	var left_distance = int(file - 1)
+	var right_distance = int(8 - file)
 
-	var upper_distance = rank
-	var lower_distance = 8 - rank
+	var upper_distance = int(rank - 1)
+	var lower_distance = int(8 - rank)
 
-	var result = 10.0
+	var result = 10
 
 	if direction.X < 0 {
-		result = math.Min(result, float64(left_distance))
+		result = min(result, left_distance / -direction.X)
 	}else if direction.X > 0{
-		result = math.Min(result, float64(right_distance))
+		result = min(result, right_distance / direction.X)
 	}
 
-	if direction.Y < 0{
-		result = math.Min(result, float64(lower_distance))
-	}else if direction.Y > 0{
-		result = math.Min(result, float64(upper_distance))
+	if direction.Y > 0{
+		result = min(result, lower_distance / direction.Y)
+	}else if direction.Y < 0{
+		result = min(result, upper_distance / -direction.Y)
 	}
 
 	return int(result)
 }
 
-const UNLIMITED = 0
+const UNLIMITED = 7
 
 //UNLIMITED is a valid limit
 func RayCastMovement(square uint64, color int8, boardCombined CombinedBoard, direction Vector, limit int, force_capture bool) []Move {

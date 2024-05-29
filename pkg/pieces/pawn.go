@@ -23,7 +23,6 @@ func (p Piece) pawnKick(boardCombined bitboard.CombinedBoard, enPassantTarget ui
 	}
 
 	for _, kickMove := range pawnKickVectors{
-		print()
 		result = append(result, bitboard.RayCastMovement(p.Position, -p.Color, boardCombined, kickMove, 1, true)...)
 	}
 
@@ -50,7 +49,6 @@ func (p Piece) GetPawnMoves(boardCombined bitboard.CombinedBoard, enPassantTarge
 	result = append(result, pawnPushRayCast(p.Position, p.Color, boardCombined, pawnForward.Multiply(int(p.Color)), push_len)...)
 
 	result = append(result, p.pawnKick(boardCombined, enPassantTarget)...)
-
 
 	return result
 }
