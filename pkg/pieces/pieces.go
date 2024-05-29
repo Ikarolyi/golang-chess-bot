@@ -50,7 +50,7 @@ func (p Piece) GetMoves(boardCombined bitboard.CombinedBoard, enPassantTarget ui
 		case QUEEN:	
 			result = p.GetQueenMoves(boardCombined)
 		case KING:
-			result = nil			
+			result = p.GetKingMoves(boardCombined)			
 	}
 
 	return result
