@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/ikaroly/gobot/pkg/bitboard"
+	"github.com/ikaroly/gobot/pkg/evaluate"
 	"github.com/ikaroly/gobot/pkg/game"
 	"github.com/ikaroly/gobot/pkg/search"
 )
@@ -82,6 +83,7 @@ func (e Engine) Listen() {
         println("True combined board", e.position.BoardCombined.GetTrueCombined())
         println("Total ", len(e.position.Pieces))
         println("E4 is empty: ", bitboard.IsSquareEmpty(bitboard.Encode("E4"), e.position.BoardCombined.GetColor(e.position.SideToMove)))
+        println("Eval depth0: ", evaluate.Evaluate(e.position))
       default: 
         log.Println("Unknown command: ", event)
 
