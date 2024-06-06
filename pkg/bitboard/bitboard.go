@@ -61,15 +61,14 @@ func Encode(in string) uint64 {
 	var rank, _ = strconv.Atoi(splitin[1])
 
 	var file_ascii = splitin[0][0]
-	var file = 0
+	var file int
 
 	
 	if file_ascii > 90{
-		file = int(file_ascii) - 98 //Uppercase 96
+		file = int(file_ascii) - 97 //Uppercase 96
 	}else{
-		file = int(file_ascii) - 66 //Lowercase 64
+		file = int(file_ascii) - 65 //Lowercase 64
 	}
-	_ = rank
 
 	return MakeSquare(file, rank)
 }
@@ -132,4 +131,11 @@ func RayCastMovement(square uint64, color int8, boardCombined CombinedBoard, dir
 		}
 	}
 	return result
+}
+
+func GetDifference(PosA uint64, PosB uint64) Vector{
+	X := int(GetFile(PosA)) - int(GetFile(PosB))
+	Y := int(GetRank(PosA)) - int(GetRank(PosB))
+
+	return Vector{X, Y}
 }

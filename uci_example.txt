@@ -313,4 +313,7 @@ Arena 3.10beta
 Pawn kick demo:
   position startpos moves e2e4 d7d5
 
+Castling demo:
+  position startpos moves e2e4 e7e6 f1a6 b8a6 g1f3 d7d5 e1g1
+
 8/7P/8/8/8/8/8/7P w KQkq - 0 1

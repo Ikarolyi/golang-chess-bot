@@ -4,7 +4,6 @@ import (
 	"github.com/ikaroly/gobot/pkg/bitboard"
 	"github.com/ikaroly/gobot/pkg/evaluate"
 	"github.com/ikaroly/gobot/pkg/game"
-	"github.com/ikaroly/gobot/pkg/pieces"
 )
 
 func GetBoardMoves(b game.Board) []game.Board{
@@ -33,32 +32,38 @@ func GetPieceMoves(b game.Board, piece_i int) []game.Board{
 	return result
 }
 
-func SearchDepth(b game.Board, master bool, depth uint) int{
-	if depth == 0{
-		return evaluate.Evaluate(b)
+func SearchDepth(b game.Board, master bool, depth uint) (bitboard.Move, int){
+	if depth <= 0{
+		return bitboard.Move{}, evaluate.Evaluate(b)
 	}
 
 	all_moves := GetBoardMoves(b)
 	
-	var best int
+	var best_score int
+	var best_move bitboard.Move
+
 	for i, move := range all_moves{
-		eval_score := SearchDepth(move, false, depth - 1)
+		_, eval_score := SearchDepth(move, false, depth - 1)
 		if i == 0{
-			best = eval_score
+			best_score = eval_score
 		}else{
 			if b.SideToMove == 1 {
-				best = max(eval_score, best)
+				best_score = max(eval_score, best_score)
 			}else{
-				best = min(eval_score, best)
+				best_score = min(eval_score, best_score)
+			}
+		}
+		if master{
+			if best_score == eval_score{
+				best_move = move.LastMove
 			}
 		}
 	}
 
-	return best
+	return best_move, best_score
 }
 
-func MasterSearch(b game.Board, depth uint) int{
-	return SearchDepth(b, true, depth)
+func MasterSearch(b game.Board, depth uint) (bitboard.Move, int){
+	best_move, best_score := SearchDepth(b, true, depth)
+	return best_move, best_score
 }
-
-// https://www.chessprogramming.org/Negamax <- Negamax

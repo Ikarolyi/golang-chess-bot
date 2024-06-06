@@ -2,6 +2,7 @@ package uci
 
 import (
 	"bufio"
+	"fmt"
 	"log"
 	"log/syslog"
 	"os"
@@ -78,26 +79,29 @@ func (e Engine) Listen() {
           }
         }
       case "go":
-        println(len(search.GetBoardMoves(e.position)))
+        // println(len(search.GetBoardMoves(e.position)))
+        println(GetBestMove(e.position))
       case "debug":
+        println("Position FEN: ", e.position.ExportFEN())
         println("True combined board", e.position.BoardCombined.GetTrueCombined())
         println("Total ", len(e.position.Pieces))
-        println("E4 is empty: ", bitboard.IsSquareEmpty(bitboard.Encode("E4"), e.position.BoardCombined.GetColor(e.position.SideToMove)))
         println("Eval depth0: ", evaluate.Evaluate(e.position))
       default: 
         log.Println("Unknown command: ", event)
 
     }
-    // if(event == "Quit") {
-    //   log.Println("Quit")
-    //   break
-    // }else if(event != ""){
-    //   log.Println(event)
-    // }
   }
 }
 
 func identify() {
   println("id name " + EngineName)
   println("id author " + EngineAuthor)
+}
+
+func GetBestMove(b game.Board) string{
+  best_move, eval_score := search.MasterSearch(b, 4)
+  println("info score cp", eval_score * int(b.SideToMove))
+
+  string_move := bitboard.Decode(best_move.From) + bitboard.Decode(best_move.To)
+  return fmt.Sprint("bestmove ", string_move)
 }

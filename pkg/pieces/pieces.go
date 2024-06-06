@@ -1,7 +1,6 @@
 package pieces
 
 import (
-	"math"
 	"unicode"
 
 	"github.com/ikaroly/gobot/pkg/bitboard"
@@ -50,7 +49,7 @@ func (p Piece) GetMoves(boardCombined bitboard.CombinedBoard, enPassantTarget ui
 		case QUEEN:	
 			result = p.GetQueenMoves(boardCombined)
 		case KING:
-			result = p.GetKingMoves(boardCombined)			
+			result = p.GetKingMoves(boardCombined)
 	}
 
 	return result
@@ -69,12 +68,12 @@ func (p Piece) GetValue() int{
 		case QUEEN:
 			return 9
 		case KING:
-			return 0
+			return 65536
 	}
 	return 0 //Shall never happen
 }
 
-func NewPiece(char rune, exponent float64) Piece{
+func NewPiece(char rune, fenIndex int) Piece{
 	var new_piece = new(Piece)
 	switch unicode.ToUpper(char) {
 		case 'P':
@@ -98,8 +97,11 @@ func NewPiece(char rune, exponent float64) Piece{
 	}
 
 
-	new_piece.Position = uint64(math.Pow(2, exponent))
-
+	// new_piece.Position = uint64(math.Pow(2, exponent))
+	// fenIndex = 64-fenIndex
+	// new_piece.Position = bitboard.MakeSquare(8-(fenIndex % 8), int(fenIndex/8)+1)
+	new_piece.Position = 1 << (56 - (int(fenIndex/8) * 8) + (fenIndex % 8))
+	
 	return *new_piece
 }
 
@@ -112,21 +114,25 @@ func (p Piece) GetColorStr() string{
 }
 
 func (p Piece) ToString() string{
-	var classRepr string
+	var result rune
 	switch p.Class{
 		case PAWN:
-			classRepr = "P"
+			result = 'P'
 		case BISHOP:
-			classRepr = "B"
+			result = 'B'
 		case KNIGHT:
-			classRepr = "N"
+			result = 'N'
 		case ROOK:
-			classRepr = "R"
+			result = 'R'
 		case QUEEN:
-			classRepr = "Q"
+			result = 'Q'
 		case KING:
-			classRepr = "K"
+			result = 'K'
 	}
 
-	return p.GetColorStr() + " " + classRepr + "@" + bitboard.Decode(p.Position)
+	if p.Color == BLACK{
+		result = unicode.ToLower(result)
+	}
+
+	return string(result)
 }

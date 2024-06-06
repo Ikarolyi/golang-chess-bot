@@ -4,9 +4,9 @@ import "github.com/ikaroly/gobot/pkg/bitboard"
 
 var RookMoveVectors = [...]bitboard.Vector{
 	{X: 0,Y: 1},
-	{X: 1,Y: 0},
-	{X: 0,Y: -1},
 	{X: -1,Y: 0},
+	{X: 0,Y: -1},
+	{X: 1,Y: 0},
 }
 
 type Rook interface {
