@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/ikaroly/gobot/pkg/bitboard"
+	"github.com/ikaroly/gobot/pkg/tables"
 	"github.com/ikaroly/gobot/pkg/pieces"
 	"golang.design/x/reflect"
 )
@@ -14,19 +15,7 @@ const StartPos = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 // const StartPos = "8/7P/8/8/8/8/8/7P w KQkq - 0 1"
 const Numbers = "0123456789"
 
-var CastlingMoves = [...]bitboard.Move{
-	{From: 16, To: 4}, // e1c1
-	{From: 16, To: 64}, // e1g1
-	{From: 1152921504606846976, To: 288230376151711744}, // e8c8
-	{From: 1152921504606846976, To: 4611686018427387904}, // e8g8
-}
 
-var RookCastlingMoves = [...]bitboard.Move{
-	{From: 1, To: 8}, // a1d1
-	{From: 128, To: 32}, // h1f1
-	{From: 72057594037927936, To: 576460752303423488}, // a8d8
-	{From: 9223372036854775808, To: 2305843009213693952}, // h8f8
-}
 
 
 type Board struct {
@@ -86,16 +75,16 @@ func NewPosition(fen string) Board{
 	var castling_fen = split_fen[2]
 	new_board.Castling = byte(0b00000000)
 	if strings.Contains(castling_fen, "K"){
-		new_board.Castling |= byte(0b00001000)
+		new_board.Castling |= tables.CastlingAbility[1]
 	}
 	if strings.Contains(castling_fen, "Q"){
-		new_board.Castling |= byte(0b00000100)
+		new_board.Castling |= tables.CastlingAbility[0]
 	}
 	if strings.Contains(castling_fen, "k"){
-		new_board.Castling |= byte(0b00000010)
+		new_board.Castling |= tables.CastlingAbility[3]
 	}
 	if strings.Contains(castling_fen, "q"){
-		new_board.Castling |= byte(0b00000001)
+		new_board.Castling |= tables.CastlingAbility[2]
 	}
 	
 	//Set up en passant
@@ -128,7 +117,7 @@ func (b Board) GetPieceOnPos(position uint64) (int, pieces.Piece){
 func GetCastledSide(move bitboard.Move) int {
 	var castledSide int = -1
 
-	for i, castlingMove := range CastlingMoves {
+	for i, castlingMove := range tables.CastlingKingMove {
 		if castlingMove == move{
 			castledSide = i
 			break
@@ -153,17 +142,24 @@ func MoveBits(b Board, move bitboard.Move) Board{
 
 		// Castling happened
 		if castlingSide != -1{
-
-			println("Google castling")
 			side_to_move := b.SideToMove // Cache side to move because moving the rook will change it
 			
 			// Move the rook
-			var rookMove = RookCastlingMoves[castlingSide]
+			var rookMove = tables.CastlingRookMove[castlingSide]
 			new_board = MoveBits(new_board, rookMove)
 
-			new_board.SideToMove = side_to_move // reset side to move
+			new_board.SideToMove = side_to_move // Reset the side to move
 		}
+		
+		// Remove the castling ability
+		if b.SideToMove == pieces.WHITE{
+			new_board.Castling ^= tables.CastlingAbility[0] | tables.CastlingAbility[1]
+		}else {
+			new_board.Castling ^= tables.CastlingAbility[2] | tables.CastlingAbility[3]
+		}
+
 	}
+	// TODO disable castling with the rook
 
 	// TODO optimization
 
@@ -232,7 +228,7 @@ func (b Board) ExportFEN() string {
 	var result = ""
 	
 	var emptyFor = 0
-	for sqI := 0; sqI < 63; sqI++{
+	for sqI := 0; sqI < 64; sqI++{
 		// Flip files (fen thing)
 		var bitSquare uint64 = 1 << (56 - (int(sqI/8) * 8) + (sqI % 8))
 

@@ -316,4 +316,7 @@ Pawn kick demo:
 Castling demo:
   position startpos moves e2e4 e7e6 f1a6 b8a6 g1f3 d7d5 e1g1
 
+"Forced" castling:
+  position startpos moves e2e4 h7h5 f1c4 h5h4 d1f3 f7f6 f3b3 e7e6 b3a3 f8a3 b2a3 g7g5 c1b2 g5g4 b2f6 g8f6 d2d3 h4h3 g2h3 g4h3 b1d2 e6e5 c2c3 d7d6 c4a6 b7a6 e1c1 d6d5 d2f3 d5e4 f3g5 e4d3 f2f3
+
 8/7P/8/8/8/8/8/7P w KQkq - 0 1

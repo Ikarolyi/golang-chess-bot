@@ -4,17 +4,46 @@ import (
 	"github.com/ikaroly/gobot/pkg/bitboard"
 	"github.com/ikaroly/gobot/pkg/evaluate"
 	"github.com/ikaroly/gobot/pkg/game"
+	"github.com/ikaroly/gobot/pkg/pieces"
+	"github.com/ikaroly/gobot/pkg/tables"
 )
 
 func GetBoardMoves(b game.Board) []game.Board{
 	var result []game.Board
 
+	// Generate normal moves
+
 	for i, piece := range b.Pieces{
-		if piece.Color == -b.SideToMove{
+		if piece.Color != b.SideToMove{
 			continue
 		}
 
 		result = append(result, GetPieceMoves(b, i)...)
+	}
+
+	// Generate castling moves
+	
+	castlingBase := 0
+	if b.SideToMove == pieces.BLACK{
+		castlingBase = 2
+	}
+
+	var threatenedSquares uint64 // Only calculated when needed
+	for i := castlingBase; i <= castlingBase + 1; i++{
+		if (tables.CastlingAbility[i] != (b.Castling | tables.CastlingAbility[i])){
+			// Check if there are pieces in the way
+			if bitboard.IsSquareEmpty(tables.CastlingSkippedSquares[i], b.BoardCombined.GetTrueCombined()){
+				if threatenedSquares == 0{
+					threatenedSquares = pieces.GetThreatenedSquares(b.BoardCombined, -b.SideToMove, b.Pieces)
+				}
+
+				// Check if any of the squares is threatened
+				var castlingSquares uint64 = tables.CastlingSkippedSquares[i] | tables.CastlingKingMove[i].From | tables.CastlingRookMove[i].From
+				if bitboard.IsSquareEmpty(castlingSquares, threatenedSquares){
+					result = append(result, game.MoveBits(b, tables.CastlingKingMove[i]))
+				}
+			}
+		}
 	}
 
 	return result
@@ -38,6 +67,9 @@ func SearchDepth(b game.Board, master bool, depth uint) (bitboard.Move, int){
 	}
 
 	all_moves := GetBoardMoves(b)
+	if master {
+		println("Len", len(all_moves))
+	}
 	
 	var best_score int
 	var best_move bitboard.Move

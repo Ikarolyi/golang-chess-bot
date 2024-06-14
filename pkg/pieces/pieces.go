@@ -55,6 +55,28 @@ func (p Piece) GetMoves(boardCombined bitboard.CombinedBoard, enPassantTarget ui
 	return result
 }
 
+func GetThreatenedSquares(boardCombined bitboard.CombinedBoard, color int8, pieces []Piece) uint64{
+	var result uint64
+	for _, piece := range pieces{
+		if piece.Color != color{
+			continue
+		}
+		
+		var pieceMoves []bitboard.Move
+		if piece.Class != PAWN{
+			pieceMoves = piece.GetMoves(boardCombined, 0)
+		}else{
+			pieceMoves = piece.pawnKick(boardCombined, 0)
+		}
+
+		for _, pieceMove := range pieceMoves{
+			result |= pieceMove.To
+		}
+	}
+	
+	return result
+}
+
 func (p Piece) GetValue() int{
 	switch class := p.Class; class{
 		case PAWN:

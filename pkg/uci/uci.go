@@ -55,7 +55,7 @@ func (e Engine) Listen() {
     var event = e.Read()
     event = strings.TrimSpace(event)
     switch strings.TrimSpace(strings.Split(event, " ")[0]){
-      case "Quit":
+      case "quit":
         log.Println("Quit")
         break mainloop
       case "uci":
@@ -99,7 +99,7 @@ func identify() {
 }
 
 func GetBestMove(b game.Board) string{
-  best_move, eval_score := search.MasterSearch(b, 4)
+  best_move, eval_score := search.MasterSearch(b, 1)
   println("info score cp", eval_score * int(b.SideToMove))
 
   string_move := bitboard.Decode(best_move.From) + bitboard.Decode(best_move.To)
