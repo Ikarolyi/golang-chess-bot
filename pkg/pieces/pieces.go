@@ -4,6 +4,7 @@ import (
 	"unicode"
 
 	"github.com/ikaroly/gobot/pkg/bitboard"
+	"github.com/ikaroly/gobot/pkg/tables"
 )
 
 
@@ -25,6 +26,7 @@ type Piece struct {
 	Color int8;
 	Position uint64
 	Class int
+	BoundCastlingAbilities byte
 }
 
 type Moves interface {
@@ -119,10 +121,24 @@ func NewPiece(char rune, fenIndex int) Piece{
 	}
 
 
-	// new_piece.Position = uint64(math.Pow(2, exponent))
-	// fenIndex = 64-fenIndex
-	// new_piece.Position = bitboard.MakeSquare(8-(fenIndex % 8), int(fenIndex/8)+1)
-	new_piece.Position = 1 << (56 - (int(fenIndex/8) * 8) + (fenIndex % 8))
+	// Init piece position (complicated formula to convert fen order to normal)
+	new_piece.Position = 1 << (56 - (int(fenIndex/8) * 8) + (fenIndex % 8)) // TODO separating formula
+
+	// Init the castling abilities bound to the piece
+	switch *new_piece{
+		case Piece{Class: KING, Color: WHITE, Position: tables.CastlingKingMove[0].From}:
+			new_piece.BoundCastlingAbilities = tables.CastlingAbility[0] | tables.CastlingAbility[1]
+		case Piece{Class: KING, Color: BLACK, Position: tables.CastlingKingMove[2].From}:
+			new_piece.BoundCastlingAbilities = tables.CastlingAbility[2] | tables.CastlingAbility[3]
+		case Piece{Class: ROOK, Color: WHITE, Position: tables.CastlingRookMove[0].From}:
+			new_piece.BoundCastlingAbilities = tables.CastlingAbility[0]
+		case Piece{Class: ROOK, Color: WHITE, Position: tables.CastlingRookMove[1].From}:
+			new_piece.BoundCastlingAbilities = tables.CastlingAbility[1]
+		case Piece{Class: ROOK, Color: BLACK, Position: tables.CastlingRookMove[2].From}:
+			new_piece.BoundCastlingAbilities = tables.CastlingAbility[2]
+		case Piece{Class: ROOK, Color: BLACK, Position: tables.CastlingRookMove[3].From}:
+			new_piece.BoundCastlingAbilities = tables.CastlingAbility[3]
+	}
 	
 	return *new_piece
 }

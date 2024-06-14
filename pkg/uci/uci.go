@@ -99,7 +99,7 @@ func identify() {
 }
 
 func GetBestMove(b game.Board) string{
-  best_move, eval_score := search.MasterSearch(b, 1)
+  best_move, eval_score := search.MasterSearch(b, 4)
   println("info score cp", eval_score * int(b.SideToMove))
 
   string_move := bitboard.Decode(best_move.From) + bitboard.Decode(best_move.To)

@@ -67,9 +67,6 @@ func SearchDepth(b game.Board, master bool, depth uint) (bitboard.Move, int){
 	}
 
 	all_moves := GetBoardMoves(b)
-	if master {
-		println("Len", len(all_moves))
-	}
 	
 	var best_score int
 	var best_move bitboard.Move

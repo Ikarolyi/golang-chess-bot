@@ -149,17 +149,11 @@ func MoveBits(b Board, move bitboard.Move) Board{
 			new_board = MoveBits(new_board, rookMove)
 
 			new_board.SideToMove = side_to_move // Reset the side to move
-		}
-		
-		// Remove the castling ability
-		if b.SideToMove == pieces.WHITE{
-			new_board.Castling ^= tables.CastlingAbility[0] | tables.CastlingAbility[1]
-		}else {
-			new_board.Castling ^= tables.CastlingAbility[2] | tables.CastlingAbility[3]
-		}
-
+		}			
 	}
-	// TODO disable castling with the rook
+		
+	// Remove the castling abilities bound to the piece
+	new_board.Castling ^= piece_to_move.BoundCastlingAbilities
 
 	// TODO optimization
 
